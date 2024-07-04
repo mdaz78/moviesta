@@ -1,3 +1,4 @@
+import BottomNav from '@/components/nav/bottom-nav';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
@@ -17,7 +18,8 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <div className='my-10 mx-24'>{children}</div>
+        <div className='m-14 py-6'>{children}</div>
+        <BottomNav />
       </body>
     </html>
   );
