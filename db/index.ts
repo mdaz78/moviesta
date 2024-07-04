@@ -22,3 +22,11 @@ export const toggleFavorite = async (movieId: string) => {
     },
   });
 };
+
+export const getFavorites = async () => {
+  return await prisma.movie.findMany({
+    where: {
+      isFav: true,
+    },
+  });
+};
