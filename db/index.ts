@@ -2,6 +2,23 @@ import { PrismaClient } from '@prisma/client';
 
 export const prisma = new PrismaClient();
 
-export const getAllMovies = () => {
-  return prisma.movie.findMany();
+export const getAllMovies = async () => {
+  return await prisma.movie.findMany();
+};
+
+export const toggleFavorite = async (movieId: string) => {
+  const movie = await prisma.movie.findUnique({
+    where: {
+      id: movieId,
+    },
+  });
+
+  const data = await prisma.movie.update({
+    where: {
+      id: movieId,
+    },
+    data: {
+      isFav: !movie?.isFav,
+    },
+  });
 };
