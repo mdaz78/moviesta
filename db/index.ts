@@ -13,7 +13,7 @@ export const toggleFavorite = async (movieId: string) => {
     },
   });
 
-  const data = await prisma.movie.update({
+  return await prisma.movie.update({
     where: {
       id: movieId,
     },
