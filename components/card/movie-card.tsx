@@ -11,9 +11,17 @@ interface MovieCardProps {
   role?: Role;
 }
 
-const MovieCard = ({ id, title, isFav, poster }: MovieCardProps) => {
+const MovieCard = ({
+  id,
+  title,
+  isFav,
+  poster,
+  role = 'user',
+}: MovieCardProps) => {
+  const href = role === 'admin' ? `/admin/${id}` : `/${id}`;
+
   return (
-    <Link href={`/${id}`}>
+    <Link href={href}>
       <div className='w-[230px] min-h-[260px] relative bg-gray-100 rounded-md shadow-sm'>
         <FavoriteButton
           id={id}

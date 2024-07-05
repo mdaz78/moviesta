@@ -1,3 +1,4 @@
+import EditMovie from '@/components/modal/edit-movie';
 import MovieDetails from '@/components/movie-details';
 import { getMovieById } from '@/db';
 import { notFound } from 'next/navigation';
@@ -15,7 +16,12 @@ const MovieDetailsPage = async ({ params }: MovieDetailsPageProps) => {
     return notFound();
   }
 
-  return <MovieDetails movie={movie} />;
+  return (
+    <div className='space-y-4'>
+      <EditMovie {...movie} />
+      <MovieDetails movie={movie} />
+    </div>
+  );
 };
 
 export default MovieDetailsPage;

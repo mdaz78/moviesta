@@ -58,6 +58,26 @@ export const addMovie = async (
   });
 };
 
+export const updateMovie = async (
+  id: string,
+  title: string,
+  plot: string,
+  poster: string,
+  runtime: string
+) => {
+  return await prisma.movie.update({
+    where: {
+      id,
+    },
+    data: {
+      title,
+      plot,
+      poster,
+      runtime: Number(runtime),
+    },
+  });
+};
+
 export const addComment = async (
   movieId: string,
   title: string,
