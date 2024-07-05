@@ -1,4 +1,5 @@
 import MovieCard from '@/components/card/movie-card';
+import MoviesContainer from '@/components/container/movies-container';
 import { getFavorites } from '@/db';
 import { Metadata } from 'next';
 
@@ -21,11 +22,11 @@ const FavoritesPage = async () => {
   }
 
   return (
-    <div className='flex gap-8 flex-wrap h-full justify-center'>
+    <MoviesContainer>
       {movies.map((movie) => (
         <MovieCard {...movie} key={movie.id} />
       ))}
-    </div>
+    </MoviesContainer>
   );
 };
 

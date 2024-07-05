@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <div className='m-14 py-6'>{children}</div>
+        <div className='m-6 sm:m-14 py-6'>{children}</div>
         <BottomNav />
       </body>
     </html>

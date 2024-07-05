@@ -30,3 +30,11 @@ export const getFavorites = async () => {
     },
   });
 };
+
+export const getMovieById = async (id: string) => {
+  return await prisma.movie.findUnique({
+    where: {
+      id,
+    },
+  });
+};
