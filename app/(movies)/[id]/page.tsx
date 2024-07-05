@@ -5,8 +5,8 @@ import CommentsList from '@/components/comments/comments-list';
 import BackgroundImage from '@/components/utils/background-image';
 import Pills from '@/components/utils/pills';
 import { getMovieById } from '@/db';
+import { Clock } from 'lucide-react';
 import { notFound } from 'next/navigation';
-import { BiCalendar } from 'react-icons/bi';
 
 interface MovieDetailsPageProps {
   params: {
@@ -48,8 +48,8 @@ const MovieDetailsPage = async ({ params }: MovieDetailsPageProps) => {
         </div>
         <div>
           <Pills className='w-fit flex items-center space-x-2'>
-            <BiCalendar className='text-md' />
-            <span className='text-sm'>{movie.released}</span>
+            <Clock className='text-md' />
+            <span className='text-sm'>{movie.runtime} mins</span>
           </Pills>
         </div>
 

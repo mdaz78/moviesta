@@ -125,10 +125,20 @@ const movies = [
 
 const prisma = new PrismaClient();
 
+function getRuntime(runtime: string) {
+  const [mins, _] = runtime.split(' ');
+  return parseInt(mins);
+}
+
 async function main() {
   for (const movie of movies) {
     await prisma.movie.create({
-      data: movie,
+      data: {
+        title: movie.title,
+        runtime: getRuntime(movie.runtime),
+        plot: movie.plot,
+        poster: movie.poster,
+      },
     });
   }
 }

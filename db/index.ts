@@ -42,6 +42,22 @@ export const getMovieById = async (id: string) => {
   });
 };
 
+export const addMovie = async (
+  title: string,
+  plot: string,
+  poster: string,
+  runtime: string
+) => {
+  return await prisma.movie.create({
+    data: {
+      title,
+      plot,
+      poster,
+      runtime: Number(runtime),
+    },
+  });
+};
+
 export const addComment = async (
   movieId: string,
   title: string,
@@ -54,4 +70,8 @@ export const addComment = async (
       movieId,
     },
   });
+};
+
+export const getAllComments = async () => {
+  return await prisma.comment.findMany();
 };

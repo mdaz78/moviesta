@@ -9,8 +9,6 @@ interface CommentsListProps {
 }
 
 const CommentsList = ({ comments }: CommentsListProps) => {
-  console.log({ comments });
-
   if (!comments || comments.length === 0) {
     return null;
   }

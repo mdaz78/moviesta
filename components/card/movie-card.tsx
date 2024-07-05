@@ -1,4 +1,5 @@
 import FavoriteButton from '@/components/buttons/favorite-button';
+import { Role } from '@/types';
 import Link from 'next/link';
 import BackgroundImage from '../utils/background-image';
 
@@ -7,6 +8,7 @@ interface MovieCardProps {
   title: string;
   isFav: boolean;
   poster: string;
+  role?: Role;
 }
 
 const MovieCard = ({ id, title, isFav, poster }: MovieCardProps) => {
