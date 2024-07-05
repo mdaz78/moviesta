@@ -20,8 +20,6 @@ export function UserProvider({ children }: { children: ReactNode }) {
   const [role, setRole] = useState<Role>('user');
   const pathname = usePathname();
 
-  console.log({ pathname });
-
   useEffect(() => {
     const isAdmin = pathname?.includes('/admin');
     setRole(isAdmin ? 'admin' : 'user');

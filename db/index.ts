@@ -78,6 +78,17 @@ export const updateMovie = async (
   });
 };
 
+export const deleteMovie = async (id: string) => {
+  return await prisma.movie.delete({
+    where: {
+      id,
+    },
+    include: {
+      comments: true,
+    },
+  });
+};
+
 export const addComment = async (
   movieId: string,
   title: string,

@@ -1,3 +1,4 @@
+import DeleteButton from '@/components/buttons/delete-button';
 import EditMovie from '@/components/modal/edit-movie';
 import MovieDetails from '@/components/movie-details';
 import { getMovieById } from '@/db';
@@ -18,7 +19,10 @@ const MovieDetailsPage = async ({ params }: MovieDetailsPageProps) => {
 
   return (
     <div className='space-y-4'>
-      <EditMovie {...movie} />
+      <div className='space-x-3'>
+        <EditMovie {...movie} />
+        <DeleteButton id={movie.id} />
+      </div>
       <MovieDetails movie={movie} />
     </div>
   );

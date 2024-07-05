@@ -15,7 +15,7 @@ export const addMovie = async (formData: FormData) => {
   const title = formData.get('title') as string;
   const plot = formData.get('plot') as string;
   const poster = formData.get('poster') as string;
-  const runtime = formData.get('runtime') as string;
+  const runtime = formData.get('run-time') as string;
 
   await db.addMovie(title, plot, poster, runtime);
 
@@ -37,4 +37,13 @@ export const updateMovie = async (id: string, formData: FormData) => {
   revalidatePath('/admin');
 
   redirect(`/admin/${id}`);
+};
+
+export const deleteMovie = async (id: string) => {
+  await db.deleteMovie(id);
+
+  revalidatePath('/movies');
+  revalidatePath('/admin');
+
+  redirect('/admin');
 };
