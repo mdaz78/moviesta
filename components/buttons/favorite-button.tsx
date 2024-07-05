@@ -7,25 +7,24 @@ import { FaHeart } from 'react-icons/fa';
 interface FavoriteButtonProps {
   id: string;
   isFav: boolean;
+  className?: string;
 }
 
-const FavoriteButton = ({ id, isFav }: FavoriteButtonProps) => {
+const FavoriteButton = ({ id, isFav, className = '' }: FavoriteButtonProps) => {
   const path = usePathname();
 
+  const handleLikeButtonClick = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    await toggleFavorite(id, path);
+  };
+
   return (
-    <button
-      className='absolute top-2 right-2 z-30'
-      type='button'
-      onClick={async () => {
-        await toggleFavorite(id, path);
-      }}
-    >
-      {isFav ? (
-        <FaHeart className={`text-red-600 text-lg`} />
-      ) : (
-        <FaHeart className={`text-gray-600 text-lg`} />
-      )}
-    </button>
+    <FaHeart
+      className={`${
+        isFav ? 'text-red-600' : 'text-gray-600'
+      } text-lg cursor-pointer ${className}`}
+      onClick={handleLikeButtonClick}
+    />
   );
 };
 
