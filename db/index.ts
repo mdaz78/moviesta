@@ -95,3 +95,11 @@ export const addComment = async (
 export const getAllComments = async () => {
   return await prisma.comment.findMany();
 };
+
+export const deleteComment = async (id: string) => {
+  return await prisma.comment.delete({
+    where: {
+      id,
+    },
+  });
+};

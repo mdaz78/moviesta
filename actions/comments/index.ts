@@ -13,3 +13,10 @@ export const addComment = async (movieId: string, formData?: FormData) => {
   revalidatePath(`/${movieId}`);
   redirect(`/${movieId}`);
 };
+
+export const deleteComment = async (commentId: string, movieId: string) => {
+  await db.deleteComment(commentId);
+
+  revalidatePath(`/admin/${movieId}`);
+  redirect(`/admin/${movieId}`);
+};
