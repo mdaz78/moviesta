@@ -1,5 +1,7 @@
 import BackButton from '@/components/buttons/back-button';
 import FavoriteButton from '@/components/buttons/favorite-button';
+import AddComment from '@/components/comments/add-comment';
+import CommentsList from '@/components/comments/comments-list';
 import BackgroundImage from '@/components/utils/background-image';
 import Pills from '@/components/utils/pills';
 import { getMovieById } from '@/db';
@@ -50,6 +52,11 @@ const MovieDetailsPage = async ({ params }: MovieDetailsPageProps) => {
             <span className='text-sm'>{movie.released}</span>
           </Pills>
         </div>
+
+        <hr className='my-4' />
+
+        <AddComment movieId={movie.id} />
+        <CommentsList comments={movie.comments} />
       </main>
     </div>
   );

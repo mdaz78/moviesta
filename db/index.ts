@@ -36,5 +36,22 @@ export const getMovieById = async (id: string) => {
     where: {
       id,
     },
+    include: {
+      comments: true,
+    },
+  });
+};
+
+export const addComment = async (
+  movieId: string,
+  title: string,
+  body: string
+) => {
+  return await prisma.comment.create({
+    data: {
+      title,
+      body,
+      movieId,
+    },
   });
 };

@@ -11,11 +11,21 @@ datasource db {
 }
 
 model Movie {
-  id       String  @id @unique @default(uuid())
+  id       String    @id @unique @default(uuid())
   title    String
   runtime  String
   released String
   plot     String
   poster   String
-  isFav    Boolean @default(false)
+  isFav    Boolean   @default(false)
+  comments Comment[]
+}
+
+model Comment {
+  id      String @id @unique @default(uuid())
+  title   String
+  body    String
+  movieId String
+
+  movie Movie @relation(fields: [movieId], references: [id], onDelete: Cascade)
 }
